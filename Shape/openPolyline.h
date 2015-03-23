@@ -6,13 +6,13 @@ namespace ShapeLibrary
 	class OpenPolyline : public Shape
 	{
 	public:
-		OpenPolyline(const IWindowAPI & iWindowApi);
+		OpenPolyline(IWindowAPI & iWindowApi);
 		virtual ~OpenPolyline();
 		virtual void add(const Point &point);
 		virtual void draw();
-		virtual void setLineColor(const Color &lineColor);
+		virtual void setLineColor(const Color &color);
 		virtual Color getLineColor() const;
-		virtual void setFillColor(const Color &fillColor);
+		virtual void setFillColor(const Color &color);
 		virtual Color getFillColor() const;
 		virtual Point getPoint(float index) const;
 		virtual unsigned int getNumberOfPoints() const;
