@@ -2,43 +2,52 @@
 
 using namespace ShapeLibrary;
 
-Rectangle::Rectangle(IWindowAPI &iWindowApi) {
-	windowAPI = &iWindowApi;
+Rectangle::Rectangle(IWindowAPI &iWindowApi) : Shape(iWindowApi) {
+
 }
 
-void Rectangle::add(const Point & point){
-	Shape::add(point);
+
+
+Rectangle::~Rectangle(){
+	
 }
 
-void Rectangle::setLineColor(const Color &color){
-	lineColor = color;
+void Rectangle::setPosition(const Point & point){
+	position = point;
 }
 
-Color Rectangle::getLineColor() const{
-	return lineColor;
+Point Rectangle::getPosition() const{
+	return position;
 }
 
-void Rectangle::setFillColor(const Color &color){
-	fillColor = color;
-}
-
-Color Rectangle::getFillColor() const{
-	return fillColor;
-}
-
-Point Rectangle::getPoint(float index) const{
-	if (index >= points.size()){
-		throw std::out_of_range("Index trop grand");
+void Rectangle::setHeight(int value){
+	if (value < 0){
+		throw std::invalid_argument("Valeur trop petite");
 	}
-
-	return points.at(index);
+	height = value;
 }
 
-unsigned int Rectangle::getNumberOfPoints() const{
-	return points.size();
+int Rectangle::getHeight() const {
+	return height;
 }
+
+void Rectangle::setWidth(int value){
+	if (value < 0){
+		throw std::invalid_argument("Valeur trop petite");
+	}
+	width = value;
+}
+
+int Rectangle::getWidth() const {
+	return width;
+}
+
+
 
 void Rectangle::draw(){
-
+	windowAPI->setDrawingColor(lineColor);
+	windowAPI->drawRectangle(position, width, height);
+	windowAPI->setDrawingColor(fillColor);
+	windowAPI->fillRectangle(position, width, height);
 }
 

@@ -4,6 +4,10 @@
 
 using namespace ShapeLibrary;
 
+Point::Point(){
+
+}
+
 
 Point::Point( double _x, double _y ) :
 	x(_x), 

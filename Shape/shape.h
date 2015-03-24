@@ -11,7 +11,6 @@ namespace ShapeLibrary
 	class Shape
 	{
 	public:
-		Shape();
 		Shape(IWindowAPI & iWindowApi);
 		virtual ~Shape();
 		virtual void add(const Point &point);
@@ -22,7 +21,7 @@ namespace ShapeLibrary
 		virtual Color getFillColor() const;
 		virtual Point getPoint(float index) const;
 		virtual unsigned int getNumberOfPoints() const;
-	private:
+	protected:
 		IWindowAPI * windowAPI;
 		vector<Point> points;
 		Color lineColor;

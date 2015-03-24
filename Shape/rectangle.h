@@ -8,18 +8,16 @@ namespace ShapeLibrary
 	public:
 		Rectangle(IWindowAPI & iWindowApi);
 		~Rectangle();
-		void add(const Point &point);
 		void draw();
-		void setLineColor(const Color &color);
-		Color getLineColor() const;
-		void setFillColor(const Color &color);
-		Color getFillColor() const;
-		Point getPoint(float index) const;
-		unsigned int getNumberOfPoints() const;
+		void setPosition(const Point & point);
+		Point getPosition() const;
+		void setHeight(int value);
+		int getHeight() const;
+		void setWidth(int value);
+		int getWidth() const;
 	private:
-		IWindowAPI * windowAPI;
-		vector<Point> points;
-		Color lineColor;
-		Color fillColor;
+		int height;
+		int width;
+		Point position;
 	};
 }

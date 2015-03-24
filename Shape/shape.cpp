@@ -2,13 +2,13 @@
 
 using namespace ShapeLibrary;
 
+
 Shape::Shape(IWindowAPI & iWindowApi){
 	windowAPI = &iWindowApi;
 }
 
 Shape :: ~Shape(){
-	delete &points;
-	delete windowAPI;
+
 }
 
 void Shape::add(const Point &point){

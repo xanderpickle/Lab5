@@ -2,42 +2,21 @@
 
 using namespace ShapeLibrary;
 
-OpenPolyline::OpenPolyline(IWindowAPI &iWindowApi) {
-	windowAPI = &iWindowApi;
+
+OpenPolyline::OpenPolyline(IWindowAPI &iWindowApi): Shape(iWindowApi) {
+
 }
 
-void OpenPolyline::add(const Point & point){
-	Shape::add(point);
+OpenPolyline::~OpenPolyline(){
 }
 
-void OpenPolyline::setLineColor(const Color &color){
-	lineColor = color;
-}
-
-Color OpenPolyline::getLineColor() const{
-	return lineColor;
-}
-
-void OpenPolyline::setFillColor(const Color &color){
-	fillColor = color;
-}
-
-Color OpenPolyline::getFillColor() const{
-	return fillColor;
-}
-
-Point OpenPolyline::getPoint(float index) const{
-	if (index >= points.size()){
-		throw std::out_of_range("Index trop grand");
-	}
-
-	return points.at(index);
-}
-
-unsigned int OpenPolyline::getNumberOfPoints() const{
-	return points.size();
-}
 
 void OpenPolyline::draw(){
-	
+	if (points.size() < 2){
+		throw std::runtime_error("Pas assez de points");
+	}
+	windowAPI->setDrawingColor(lineColor);
+	for (int i = 0; i + 1 < points.size(); i++){
+		windowAPI->drawLine(points.at(i), points.at(i + 1));	
+	}
 }
